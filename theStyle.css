@@ -5,6 +5,10 @@ body {
     margin: 4vh;
 }
 
+a {
+    text-decoration: none;
+}
+
 main {
     text-align: center;
 }

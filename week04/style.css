@@ -1,0 +1,187 @@
+:root {
+    --mouth-duration: 1250ms;
+    --mouth-color: linear-gradient(#9a99f2, #e6f2ff);
+}
+
+#grad1 {
+    background-color: white;
+    background-image: linear-gradient(white, black);
+}
+
+#grad2 {
+    background-color: white;
+    background-image: linear-gradient(#60308c, white);
+}
+
+body {
+    background-color: white;
+    padding: 0px;
+    border: solid 20px black;
+    text-align: center;
+    margin-left: 35vh;
+    margin-right: 35vh;
+}
+
+div {
+    position:relative;
+}
+
+.rightEye {
+    display:inline-block;
+    margin: auto;
+    margin-top: 4vh;
+    margin-left: 100px;
+
+    width:15vh;
+    height:15vh;
+    
+    background-color: whitesmoke;
+    border: 12px solid black;
+    border-radius: 30%;
+
+    animation: eyeMove 7s infinite;
+}
+
+.leftEye {
+    display:inline-block;
+    margin: auto;
+    margin-top: 4vh;
+    margin-right: 100px;
+
+    width:10vh;
+    height:10vh;
+
+    background-color: whitesmoke;
+    border: 12px solid black;
+    border-radius: 30%;
+
+    animation: eyeMove 3s infinite;
+}
+
+.nose {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+
+    width: 5vw;
+    height: 16vh;
+    
+    background-color:#805ebf;
+    border: solid 2px black;
+    border-radius: 25%;
+
+    animation: noseTwitch 5s ease-in infinite;
+}
+
+.pupil {
+    margin:auto;
+    float:left;
+    background-color: black;
+    width:30%;
+    height:30%;
+    border-radius: 50%;
+
+    animation: movePupil 2s ease-in-out infinite;
+}
+
+.mouthMiddle {
+    margin-top: 59px;
+    display: inline-block;
+
+    background-image: var(--mouth-color);
+    border: solid 3px black;
+    
+    width: 14%;
+    height: 40%;
+
+    animation: moveMouth var(--mouth-duration) infinite;
+}
+
+.mouthInner3 {
+    display: inline-block;
+
+    background-image: var(--mouth-color);
+    border: solid 3px black;
+
+    width: 9%;
+    height: 40%;
+
+    animation: moveMouth var(--mouth-duration) 250ms infinite;
+}
+
+.mouthInner2 {
+    display: inline-block;
+
+    background-image: var(--mouth-color);
+    border: solid 3px black;
+
+    width: 5%;
+    height: 40%;
+
+    animation: moveMouth var(--mouth-duration) 500ms infinite;
+}
+
+.mouthInner1 {
+    display: inline-block;
+
+    background-image: var(--mouth-color);
+    border: solid 3px black;
+
+    width: 2%;
+    height: 40%;
+
+    animation: moveMouth var(--mouth-duration) 750ms infinite;
+}
+
+.mouthOuter {
+    display: inline-block;
+
+    background-image: var(--mouth-color);
+    border: solid 3px black;
+
+    width: 1%;
+    height: 40%;
+
+    animation: moveMouth var(--mouth-duration) 1s infinite;
+}
+
+
+@keyframes mouthMove {
+    0% { transform: scale(1); }
+    50% { transform: scale(2); }
+    100% { transform: scale(1); }
+}
+
+@keyframes eyeMove {
+    0% { transform: scale(0.5) rotate(0); }
+    25% { transform: scale(0.25) rotate(60deg); }
+    50% { transform: scale(1) rotate(200deg); }
+    75% { transform: scale(1.25) rotate(150deg); }
+    100% { transform: scale(0.5) rotate(0); }
+}
+
+@keyframes movePupil {
+    0% { top:0; }
+    20% { left:0; top: 70%; }
+    40% { left: 70%; }
+    60% { left:0% }
+    80% { top:50%; left:60%; }
+    100% { top:0; left:0; }
+}
+
+@keyframes noseTwitch {
+    88% { transform: rotate(0); }
+    90% { transform: rotate(-10deg); }
+    92% { transform: rotate(10deg); }
+    94% { transform: rotate(-10deg); }
+    96% { transform: rotate(10deg); }
+    98% { transform: rotate(-10deg); }
+    100% { transform: rotate(0); }
+}
+
+@keyframes moveMouth {
+    0% { transform: scaleY(1); }
+    50% { transform: scaleY(0.1); }
+    100% { transform: scaleY(1); }
+}

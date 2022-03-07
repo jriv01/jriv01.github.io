@@ -1,0 +1,290 @@
+a {
+    text-decoration: none;
+}
+
+#grad1 {
+    background-color: #000000;
+    background-image: radial-gradient(circle, #414141 0%, #000000 74%);
+}
+
+#neilBody {
+    background-color: #0F060B;
+}
+
+#intro{
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+
+    background-color: black;
+
+    animation: fadeOut 4s;
+    opacity: 0%;
+
+    z-index: 0;
+}
+
+#choicesBody {
+    background-color: #0F060B;
+    border: solid 20px black;
+}
+
+#collageBody {
+    background-color: #0F060B;
+    background-image: linear-gradient(90deg, #0F060B,#491133,#0F060B)
+}
+
+#homeBody {
+    background-color: #000000;
+    background-image: radial-gradient(circle, #414141 0%, #000000 74%);
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    width:75%;
+    height:75%;
+
+    border: solid 20px black;
+    margin:auto;
+    margin-top: 1%;
+    margin-bottom: 1%;
+
+    background-color: #9A031E;
+}
+
+.character {
+    background-color: gray;
+    border: solid 10px rgb(10, 10, 10);
+    max-width: 100%;
+    min-height: 100%;
+}
+
+.clickable {
+    opacity: 1;
+}
+
+.clickable:hover {
+    opacity: 0.5;
+}
+
+
+.choiceContainer { 
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    height:100%;
+
+    background-image:url(sources/bar_background.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.choice {
+    align-self: center;
+    justify-self: center;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, .76);
+    border: solid 10px black;
+    color:white;
+    font-size: 40px;
+    font-family: 'Syne Mono', monospace;
+
+
+    width: 30%;
+    height: 10%;
+}
+
+.button:hover {
+    background-color: rgba(70, 0, 0, 0.9);
+}
+
+.neilContainer {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+    width:100%;
+    height:100%;
+}
+
+.pageSplit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    background-color: #6E0C38;
+    background-image: url(sources/bar_almostoutside.png);
+    border: solid 5px black;
+    height: 85%;
+    width: 48%;
+}
+
+.neilImage {
+    background-color: rgb(0, 0, 0);
+    border: solid 15px black;
+    color: white;
+    width: 50%;
+    height: 50%;
+}
+
+.textBox {
+    justify-self: flex-end;
+
+    background-color: rgba(0, 0, 0, .76);
+    border: solid 15px black;
+    color: white;
+
+    padding: 10px;
+    width: 95%;
+    height: 30%;
+
+    text-align: left;
+    font-size: 25px;
+    font-family: 'Syne Mono', monospace;
+}
+
+.titleBox {
+    justify-self: flex-end;
+
+    background-color: rgba(0, 0, 0, .76);
+    border: solid 15px black;
+    color: white;
+
+    padding: 10px;
+    width: 30%;
+    height: 10%;
+    margin: auto;
+
+    text-align: center;
+    font-size: 40px;
+    font-family: 'Syne Mono', monospace;
+}
+
+
+.collage {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 95%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.collageRow {
+    display: flex;
+    justify-content: center;
+    width: 65%;
+    height: 30%;
+    margin-bottom: 5px;
+}
+
+.collageRowReverse {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    width: 65%;
+    height: 30%;
+    margin-bottom: 5px;
+}
+
+.collageType1 {
+    flex: 1;
+    background-color: white;
+    border: solid 5px black;
+}
+
+.collageType2 {
+   flex: 2;
+   background-color: green;
+   border: solid 5px black;
+}
+
+.collageType3 {
+    flex: 2.2;
+    background-color: blue;
+    border: solid 5px black;
+}
+
+.homeContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80%;
+    flex-direction: column;
+}
+
+.barContainer {
+    display: flex;
+    width: 80%;
+    height: 100%;
+
+    background-image: url(sources/the_bar.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; 
+
+    align-items: flex-end;
+}
+
+.angela {
+
+    background-color: rgba(0, 0, 0, .76);
+    border: solid 15px black;
+    color: white;
+
+    padding: 10px;
+    width: 70%;
+    height: 20%;
+
+    text-align: left;
+    font-size: 25px;
+    font-family: 'Syne Mono', monospace;
+
+    flex: 4;
+}
+
+.angelaImage {
+    width: 20%;
+    height: 40%;
+}
+
+.btsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.wireImage {
+    margin: auto;
+}
+
+
+@keyframes fadeOut{
+    0%{
+        opacity: 100%;
+        z-index: 3;
+    }
+    25%{
+        opacity: 100%;
+    }
+    100%{
+        opacity: 0%;
+        z-index: 3;
+    }
+}

@@ -206,18 +206,25 @@ a {
     flex: 1;
     background-color: white;
     border: solid 5px black;
+    max-width: 100%;
+    min-height: 100%;
+    
 }
 
 .collageType2 {
    flex: 2;
    background-color: green;
    border: solid 5px black;
+   max-width: 100%;
+   min-height: 100%;
 }
 
 .collageType3 {
     flex: 2.2;
     background-color: blue;
     border: solid 5px black;
+    max-width: 100%;
+    min-height: 100%;
 }
 
 .homeContainer {

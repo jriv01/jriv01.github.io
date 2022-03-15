@@ -1,0 +1,206 @@
+html {
+    scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: #979DAC;
+    background-image: url(https://cdn.pixabay.com/photo/2020/05/13/12/51/forest-5167332_1280.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.wrapper {
+    display: flex;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+}
+
+.vert {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hori {
+    justify-content: center;
+    align-items: center;
+}
+
+.heading {
+    justify-content: start;
+    align-items: center;
+    background-color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.white-back {
+    background-color: white;
+}
+
+.blue-back {
+    background-color: #001D52;
+}
+
+.info-box {
+    justify-content: flex-start;
+    align-items: center;
+    
+    animation: slideLeft 2s ease-in-out;
+}
+
+.info-box p {
+    display: flex;
+    align-items: center;
+    width: 40vw;
+    height: 20vw;
+    margin-left: 10vw;
+    font: 7vw 'Montserrat', sans-serif;
+    text-align: center;
+    color: white;
+}
+
+
+h1 {
+    font: 5vw 'Montserrat', sans-serif;
+    font-style: italic;
+    font-weight: 500;
+    text-align: center;
+    width: 40vw;
+    margin: 0;
+
+    animation: slideDown 1.5s ease-in-out;
+}
+
+#Sites h1 {
+    color: white;
+}
+
+#Weeks h1 {
+    color: black;
+}
+
+#Sites p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 50vw;
+    height: 8vw;
+    margin: 3vw;
+    background-color: white;
+    border-radius: 1vh;
+    
+    font: 3vw 'Montserrat', sans-serif;
+    color: black;
+
+    transition: all .5s ease-in-out;
+}
+
+#Sites p:hover {
+    background-color: #0047CC;
+    color: white;
+    transform: scale(1.05);
+}
+
+#Weeks p {
+    display: flex;
+    align-items: flex-end;
+
+    width: 9vw;
+    height: 6vw;
+    margin: 2vw;
+    padding: 1vh;
+    border-radius: 2vh;
+    border: solid 5px #060753;
+    background-image: linear-gradient(25deg, #011228, #040677);
+    
+    font: 2vw 'Tajawal', sans-serif;
+    color: white;
+    
+    transition: all .5s ease-in-out;
+    animation: fadeIn 1250ms ease-in-out;
+}
+
+#Weeks p:hover {
+    background-image: linear-gradient(25deg, #011228, #070AC5);
+    transform: scale(1.1);
+}
+
+ul {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    list-style-type:none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+
+    font-size: 1.1vw;
+
+    transition: all .2s ease-in-out;
+}
+
+li a:hover {
+    color: white;
+    background-color: #023E7D;
+}
+
+li p {
+    color: black;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    font-size: 2vw;
+    border-right: solid 1px gray;
+    margin-right: 1vh;
+}
+
+@keyframes slideLeft{
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    100% {
+        opacity: 100%;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideDown{
+    0% {
+        opacity: 0;
+        transform: translateY(-100%);
+    } 
+    100% {
+        opacity: 100%;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn{
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 100%;
+    }
+}

@@ -1,34 +1,67 @@
+<!DOCTYPE html>
 <html>
     <head>
-        <title>really cool site</title>
-            <link rel="stylesheet" type="text/css" href="/theStyle.css">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>really cool website</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+        <link rel="stylesheet" type="text/css" href="/style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Lexend+Peta:wght@900&family=Montserrat:wght@500&family=Tajawal&display=swap" rel="stylesheet">
     </head>
-    <body>
-        <main>
-            <div class="container">
-                <div class="leftRight">
-                    <div class="leftItem firstRow", id="clickable"><a href="./week01/index.html">Week 01</a></div>
-                    <div class="leftItem secondRow", id="clickable"><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">Week 02</a></div>
-                    <div class="leftItem thirdRow", id="clickable"><a href="./week03/index.html">Week 03</a></div>
-                    <div class="leftItem fourthRow", id="clickable"><a href="./week04/index.html">Week 04</a></div>
-                    <div class="leftItem fifthRow", id="clickable"><a href="./week05/index.html">Week 05</a></div>
-                    <div class="leftItem sixthRow", id="clickable"><a href="./week06/index.html">Week 06</a></div>
-                </div>
-                <div class="middle">
-                    <div class="header1", id="label">Justin's Website</div>
-                    <div class="header2", id="label">NYU Web Development</div>
-                    <img class="image", src="https://i.imgur.com/yY9Oj5S.gif">
-                </div>
-                <div class="leftRight">
-                    <div class="rightItem firstRow", id="clickable"></div>
-                    <div class="rightItem secondRow", id="clickable"></div>
-                    <div class="rightItem thirdRow", id="clickable"></div>
-                    <div class="rightItem fourthRow", id="clickable"></div>
-                    <div class="rightItem fifthRow", id="clickable"></div>
-                    <div class="rightItem sixthRow", id="clickable"></div>
-                </div>
+    <body> 
+        <div class="wrapper heading">
+            <ul>
+                <li><p>Justin's Website</p></li>
+                <li><a href="#Weeks">Weekly Work</a></li>
+                <li><a href="#Sites">Random Sites</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </div>
+        
+        <div class="wrapper info-box">
+            <p>NYU Web Development</p>
+        </div>
+
+        <div class="wrapper hori white-back" id="Weeks">
+            <div class="wrapper vert">
+                <h1>Weekly</h1>
+                <h1>Assignments</h1>
             </div>
-        </main>
+            <div class="wrapper vert">
+                <div class="wrapper hori">
+                    <a href="./week01/index.html"><p>Week 1</p></a>
+                    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"><p>Week 2</p></a>
+                    <a href="./week03/index.html"><p>Week 3</p></a>
+                    <a href="./week04/index.html"><p>Week 4</p></a>
+                </div>
+                <div class="wrapper hori">
+                    <a href="./week05/index.html"><p>Week 5</p></a>
+                    <a href=""><p>Week 6</p></a>
+                    <a href=""><p>Week 7</p></a>
+                    <a href=""><p>Week 8</p></a>
+                </div>
+                <div class="wrapper hori">
+                    <a href=""><p>Week 9</p></a>
+                    <a href=""><p>Week 10</p></a>
+                    <a href=""><p>Week 11</p></a>
+                    <a href=""><p>Week 12</p></a>
+                </div>
+            </div> 
+        </div>
+        <div class="wrapper hori blue-back" id="Sites">
+            <div class="wrapper vert">
+                <a href="./random_sites/moon/index.html"><p>MOON GANG</p></a>
+                <a href="./random_sites/eco/index.html"><p>ECOLOGY CLUB</p></a>
+                <a href="./random_sites/spanish/index.html"><p>SPANISH CLUB</p></a>
+            </div>
+            <div class="wrapper vert">
+                <h1>Random</h1>
+                <h1>Sites</h1>
+            </div>
+        </div>
     </body>
 </html>

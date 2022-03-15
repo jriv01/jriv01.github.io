@@ -10,6 +10,7 @@ body {
     background-color: #979DAC;
     background-image: url(https://cdn.pixabay.com/photo/2020/05/13/12/51/forest-5167332_1280.jpg);
     background-attachment: fixed;
+    background-size: contain;
     background-position: center;
     overflow-x: hidden;
     padding: 0;

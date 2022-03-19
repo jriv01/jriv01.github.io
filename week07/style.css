@@ -1,0 +1,260 @@
+body {
+    overflow: hidden;
+    background-image: radial-gradient(circle, #ffba08, #e85d04, #370617);
+    margin: 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100vh;
+    width: 100vw;
+}
+
+.people-wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    height: 90vh;
+    
+    background-image: url(https://www.pngkit.com/png/full/82-821063_black-buildings-png-buildings-silhouette-png.png);
+    background-size: 30vw;
+    background-position: bottom;
+    background-repeat: repeat-x;
+}
+
+.person {
+    align-self: flex-end;
+
+    width: 30vw;
+    height: 70vh;
+    margin-left: 3vw;
+
+    background-image: url(https://cdn.pixabay.com/photo/2016/03/31/21/30/bayonet-1296459_960_720.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    transition: transform 3s ease-in;
+}
+
+.person:hover {
+    transform: scale(1.1);
+}
+
+.cage {
+    display: flex;
+    flex-direction: column;
+    
+    width: 12vw;
+    margin-right: 10vw;
+    
+    transform-origin: 50% 0%;
+    animation: sway 10s infinite ease-in-out;
+}
+
+.bar-wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    height: 11vw;
+
+    background-image: url(https://freesvg.org/img/silhouette-rest.png);
+    background-size: cover;
+}
+
+.bar {
+    background-color: black;
+    width: 0.7vw;
+    height: 100%;
+}
+
+.cage-lid {
+    display: flex;
+    justify-content: space-around;
+    
+    height: 7vw;
+
+    overflow: hidden;
+    border: solid 0.7vw black;
+    border-top-left-radius: 8vw;
+    border-top-right-radius: 8vw;
+}
+
+.cage-bottom {
+    background-color: black;
+    height: 2vh;
+}
+
+.chain {
+    align-self: center;
+
+    width: 1vw;
+    height: 1vw;
+    
+    border: solid 0.5vw black;
+    border-radius: 50%;
+}
+
+.ground {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    width: 100%;
+    height: 10vw;
+
+    z-index: 1;
+    background-color: black;
+}
+
+.ground p {
+    color: #e85d04;
+    font-family: 'Monda', sans-serif;
+    text-align: center;
+    text-shadow: 0px 0px 25px #ffba08;
+    margin: 0;
+}
+
+.title {
+    font-size: 2.5vw;
+}
+
+.author {
+    font-size: 1.5vw;
+}
+
+.flower {
+    position: absolute;
+    width: 4vw;
+    height: 4vw;
+    z-index: 0;
+    opacity: 0;
+    background-image: url(https://i.pinimg.com/originals/c4/ce/71/c4ce711c4901681ed5a2c9d8a883992e.png);
+    background-size: cover;
+}
+
+.fall1 {
+    animation: fall1 18s 5s infinite;
+}
+
+.fall2 {
+    animation: fall2 20.7s 7s infinite;
+}
+
+.fall3 {
+    animation: fall3 20.2s 10s infinite;
+}
+
+.fall4 {
+    animation: fall4 19.2s 14s infinite;
+}
+
+.fall5 {
+    animation: fall5 21s 18s infinite;
+}
+
+.fall6 {
+    animation: fall6 18.6s 23s infinite;
+}
+
+.fall7 {
+    animation: fall7 17.8s 24s infinite;
+}
+
+@keyframes sway {
+    0% {
+        transform: rotate(-10deg);
+    }
+    50% {
+        transform: rotate(10deg);
+    }
+    100% {
+        transform: rotate(-10deg);
+    }
+}
+
+@keyframes breathe {
+    0% {
+        transform: translateY(5vh) scale(1);
+    }
+    50% {
+        transform: translateY(5vh) scale(1.1);
+    }
+    100% {
+        transform: translateY(5vh) scale(1);
+    }
+}
+
+@keyframes fall1 {
+    0% {
+        opacity: 1;
+        transform: translate(90vw, -6vw) rotate(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(10vw, 100vw) rotate(720deg);
+    }
+}
+@keyframes fall2 {
+    0% {
+        opacity: 1;
+        transform: translate(70vw, -6vw) rotate(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-20vw, 100vw) rotate(600deg);
+    }
+}
+@keyframes fall3 {
+    0% {
+        opacity: 1;
+        transform: translate(50vw, -6vw) rotate(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-15vw, 100vw) rotate(550deg);
+    }
+}
+@keyframes fall4 {
+    0% {
+        opacity: 1;
+        transform: translate(40vw, -6vw) rotate(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50vw, 100vw) rotate(720deg);
+    }
+}
+@keyframes fall5 {
+    0% {
+        opacity: 1;
+        transform: translate(75vw, -6vw) rotate(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-25vw, 100vw) rotate(390deg);
+    }
+}
+@keyframes fall6 {
+    0% {
+        opacity: 1;
+        transform: translate(38vw, -6vw) rotate(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-32vw, 100vw) rotate(720deg);
+    }
+}
+@keyframes fall7 {
+    0% {
+        opacity: 1;
+        transform: translate(64vw, -6vw) rotate(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-43vw, 100vw) rotate(720deg);
+    }
+}

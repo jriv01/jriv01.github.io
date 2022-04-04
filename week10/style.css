@@ -1,0 +1,35 @@
+
+body {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background-image: url(https://thumbs.gfycat.com/AnguishedWellmadeEmu-max-1mb.gif);
+    display: flex;
+    height: 100vh;
+}
+
+.word {
+    position: absolute;
+    /* border: solid 5px green; */
+    font-family: 'IM Fell English SC', serif;
+    z-index: -1;
+}
+
+.wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+#middle-img {
+    width: 35vw;
+    height: 25vw;
+    background-color: black;
+    background-image: url(https://asapguide.com/wp-content/uploads/2020/04/Blocc-launcher-700x468.jpg);
+    background-size: cover;
+    border: solid 15px #000000;
+    z-index: 0;
+}

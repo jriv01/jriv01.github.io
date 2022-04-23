@@ -49,7 +49,7 @@ const I_PIECE = [
     [0, 0, 0, 0],
     [0, 0, 0, 0]
 ];
-const MINO_LIST = [T_PIECE, L_PIECE, J_PIECE, Z_PIECE, S_PIECE, O_PIECE, I_PIECE];
+const MINO_LIST = [T_PIECE, L_PIECE, J_PIECE, Z_PIECE, S_PIECE, I_PIECE, O_PIECE];
 
 var $tile = $("<div />", {
     id: "tile",

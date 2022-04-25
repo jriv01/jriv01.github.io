@@ -7,6 +7,7 @@ const KEY_DOWN = 40;
 const KEY_Z = 90;
 const KEY_SPACE = 32;
 const KEY_A = 65;
+const KEY_SHIFT = 16;
 
 // Game vars
 const gridWidth  = 10;
@@ -61,11 +62,14 @@ var $row = $("<div />", {
     class: "row"
 });
 var $grid = $("#grid");
+var $nxt = $("<div />", {
+    class: "display-box"
+});
 
 class Tetromino {
     constructor(id, arrangement, row, col, size) {
         this.id = id;
-        this.arr = copyArray(arrangement);
+        this.arr = JSON.parse(JSON.stringify(arrangement));
         this.row = row;
         this.col = col;
         this.size = size;
@@ -80,21 +84,25 @@ class Tetromino {
         for(let i = 0; i < x; i++) this.col --;
     }
 
+    adjustDown(x) {
+        for(let i = 0; i < x; i++) this.row ++;
+    }
+
     moveRight() {
-        this.clear();
-        if(this.canMoveRight()) this.adjustRight(1);
-        this.draw();
+        this.drawTiles("empty");
+        if(this.canMove(1)) this.adjustRight(1);
+        this.drawTiles("mino");
     }
 
     moveLeft() {
-        this.clear();
-        if(this.canMoveLeft()) this.adjustLeft(1);
-        this.draw();
+        this.drawTiles("empty");
+        if(this.canMove(-1)) this.adjustLeft(1);
+        this.drawTiles("mino");
     }
     
     pushOffLeft() {
         let res = 0;
-        while(this.col < 0 && this.canMoveRight()) {
+        while(this.col < 0 && this.canMove(1)) {
             this.adjustRight(1);
             res ++;
         }
@@ -103,7 +111,7 @@ class Tetromino {
 
     pushOffRight() {
         let res = 0;
-        while(this.col + this.size-1 >= gridWidth && this.canMoveLeft()) {
+        while(this.col + this.size-1 >= gridWidth && this.canMove(-1)) {
             this.adjustLeft(1);
             res ++;
         }
@@ -113,7 +121,7 @@ class Tetromino {
     rotateCW() {
         if(this.id == 7) return;
         
-        this.clear();
+        this.drawTiles("empty");
         let rightCount = this.pushOffLeft();
         let leftCount = this.pushOffRight();
 
@@ -138,7 +146,7 @@ class Tetromino {
             this.adjustRight(leftCount);
         }
 
-        this.draw();
+        this.drawTiles("mino");
 
         return success;
     }
@@ -146,7 +154,7 @@ class Tetromino {
     rotateCCW() {
         if(this.id == 7) return;
 
-        this.clear();
+        this.drawTiles("empty");
         let rightCount = this.pushOffLeft();
         let leftCount = this.pushOffRight();
         let success = true;
@@ -170,14 +178,14 @@ class Tetromino {
             this.adjustRight(leftCount);
         }
 
-        this.draw();
+        this.drawTiles("mino");
 
         return success;
     }
 
     rotate180() {
         if(this.id == 7) return;
-        this.clear();
+        this.drawTiles("empty");
         let rightCount = this.pushOffLeft();
         let leftCount = this.pushOffRight();
         let success = true;
@@ -203,7 +211,7 @@ class Tetromino {
             this.adjustLeft(rightCount);
             this.adjustRight(leftCount);
         }
-        this.draw();
+        this.drawTiles("mino");
     }
 
     
@@ -287,11 +295,11 @@ class Tetromino {
         this.arr[2][1] = tempC;
     }
     
-    canMoveRight() {
+    canMove(translate) {
         for(let r = 0; r < this.arr.length; r++) {
             for(let c = 0; c < this.arr[r].length; c++) {
                 if(this.arr[r][c]) {
-                    let nCol = this.col + c + 1;
+                    let nCol = this.col + c + translate;
                     let nRow = this.row + r;
                     if(outOfBounds(nRow, nCol) || isFilled(nRow, nCol)) return false;
                 }
@@ -299,28 +307,29 @@ class Tetromino {
         }
         return true;
     }
-
-    canMoveLeft() {
-        for(let r = 0; r < this.arr.length; r++) {
-            for(let c = 0; c < this.arr[r].length; c++) {
-                if(this.arr[r][c]) {
-                    let nCol = this.col + c - 1;
-                    let nRow = this.row + r;
-                    if(outOfBounds(nRow, nCol) || isFilled(nRow, nCol)) return false;
-                }
-            }
-        }
-        return true;
-    }
-
+    
     fall() {
-        this.clear();
+        this.drawTiles("empty");
         if(!this.checkFallCollide()) {
-            this.row ++;
-            this.draw();
+            this.adjustDown(1);
+            this.drawTiles("mino");
         } else {
             this.place();
         }
+    }
+
+    ghostAdjust(arr, row, col) {
+        this.drawTiles("empty");
+        this.arr = JSON.parse(JSON.stringify(arr));
+        this.row = row;
+        this.col = col;
+    }
+
+    ghostDrop() {
+        while(!this.checkFallCollide()) {
+            this.adjustDown(1);
+        }
+        this.drawTiles("ghost");
     }
 
     hardDrop() {
@@ -358,29 +367,21 @@ class Tetromino {
             for(let c = 0; c < this.arr[r].length; c++) {
                 let currRow = this.row + r;
                 let currCol = this.col + c;
-                if(this.arr[r][c]) getTileAt(currRow, currCol).attr("class", "filled");
+                if(this.arr[r][c]) 
+                    getTileAt($grid, currRow, currCol).attr("class", "filled");
             }
         }
         this.placed = true;
         checkForClears();
     }
 
-    clear() {
+    drawTiles(type) {
         for(let r = 0; r < this.arr.length; r++) {
             for(let c = 0; c < this.arr[r].length; c++) {
                 let currRow = this.row + r;
                 let currCol = this.col + c;
-                if(this.arr[r][c] && currRow > -1) getTileAt(currRow, currCol).attr("class", "empty");
-            }
-        }
-    }
-
-    draw() {
-        for(let r = 0; r < this.arr.length; r++) {
-            for(let c = 0; c < this.arr[r].length; c++) {
-                let currRow = this.row + r;
-                let currCol = this.col + c;
-                if(this.arr[r][c] && currRow > -1) getTileAt(currRow, currCol).attr("class", "mino");
+                if(this.arr[r][c] && currRow > -1) 
+                    getTileAt($grid, currRow, currCol).attr("class", type);
             }
         }
     }
@@ -388,30 +389,18 @@ class Tetromino {
 
 const rand = (lower,upper) => Math.floor(Math.random() * (upper-lower) + lower);
 
-const copyArray = arr => {
-    let newArr = [];
-    let sz = arr.length;
-    for(let i = 0; i < sz; i++) {
-        newArr.push([])
-        for(let j = 0; j < sz; j++) {
-            newArr[i].push(arr[i][j]);
-        }
-    }
-    return newArr;
-}
-
-const createGrid = (w, h) => {
+const createGrid = ($con, w, h) => {
     for(let r = 0; r < h; r++) {
         let $newRow = $row.clone();
         for(let c = 0; c < w; c++) {
             $newRow.append($tile.clone());
         }
-        $grid.append($newRow);
+        $con.append($newRow);
     }
 }
 
-const getTileAt = (row, col) => {
-    let curr = $grid.children().eq(row);
+const getTileAt = ($con, row, col) => {
+    let curr = $con.children().eq(row);
     return $(curr).children().eq(col);
 }
 
@@ -431,15 +420,14 @@ const clearLine = r => {
 const cascadeDown = startR => {
     for(let r = startR; r > -1; r --) {
         for(let c = 0; c < gridWidth; c ++) {
-            console.log("cas")
-            if(r-1 < 0) getTileAt(r,c).attr("class", "empty");
-            else getTileAt(r,c).attr("class", getTileAt(r-1,c).attr("class"));
+            if(r-1 < 0) getTileAt($grid, r,c).attr("class", "empty");
+            else getTileAt($grid, r,c).attr("class", getTileAt($grid, r-1,c).attr("class"));
         }
     }
 }
 
 const isFilled = (r, c) => {
-    return getTileAt(r,c).hasClass("filled") && r > -1;
+    return getTileAt($grid, r,c).hasClass("filled") && r > -1;
 }
 
 const outOfBounds = (r, c) => {
@@ -460,8 +448,14 @@ const gameLoop = () => {
 const moveMinoDown = () => {
     mino.fall();
     if(mino.placed) {
-        mino = generateNewMino();
-        mino.draw();
+        clearInterval(runGame);
+        getNextMino();
+        ghost = copyMino(mino);
+        ghost.ghostDrop();
+        ghost.drawTiles("ghost");
+        mino.drawTiles("mino");
+        canHold = true;
+        runGame = setInterval(gameLoop, fallRate); 
     }
 }
 
@@ -471,6 +465,9 @@ $(document).keydown(function(event) {
     else if(event.keyCode == KEY_UP) mino.rotateCW();
     else if(event.keyCode == KEY_Z) mino.rotateCCW();
     else if(event.keyCode == KEY_A) mino.rotate180();
+    else if(event.keyCode == KEY_SHIFT) hold();
+
+    updateGhost();
 
     if(event.keyCode == KEY_DOWN) {
         moveMinoDown();
@@ -478,19 +475,133 @@ $(document).keydown(function(event) {
     } else if(event.keyCode == KEY_SPACE) {
         clearInterval(runGame);
         mino.hardDrop();
-        mino = generateNewMino();
-        mino.draw();
+        getNextMino();
+        ghost = copyMino(mino);
+        ghost.ghostDrop();
+        ghost.drawTiles("ghost");
+        mino.drawTiles("mino");
+        canHold = true;
         runGame = setInterval(gameLoop, fallRate); 
     }
 });
 
 $(document).keyup(function(event) {
-    if(event.keyCode == KEYDOWN) runGame = setInterval(gameLoop, fallRate); 
+    if(event.keyCode == KEY_DOWN) runGame = setInterval(gameLoop, fallRate); 
 });
 
+const updateGhost = () => {
+    ghost.ghostAdjust(mino.arr, mino.row, mino.col);
+    ghost.ghostDrop();
+    ghost.drawTiles("ghost");
+}
 
+const copyMino = mino => {
+    copy = new Tetromino(
+        mino.id,
+        mino.arr,
+        mino.row,
+        mino.col,
+        mino.size
+    );
+    return copy;
+}
 
-createGrid(gridWidth, gridHeight);
+const getNextMino = () => {
+    mino = nextMinos.pop();
+    nextMinos.unshift(generateNewMino());    
+    drawNextMinos();
+}
+
+const hold = () => {
+    if(!canHold) return;
+    mino.drawTiles("empty");
+    if(heldId < 0) {
+        heldId = mino.id;
+        getNextMino();
+    } else {
+        let id = heldId;
+        heldId = mino.id;
+        mino = new Tetromino(id, MINO_LIST[id-1], -1, 3, MINO_LIST[id-1].length);
+    }
+    mino.drawTiles("mino");
+    canHold = false;
+    drawHeldMino();
+}
+
+createGrid($grid, gridWidth, gridHeight);
 var mino = generateNewMino();
-mino.draw();
+var ghost = copyMino(mino);
+
+ghost.ghostDrop();
+ghost.drawTiles("ghost");
+mino.drawTiles("mino");
+
+var heldId = -1;
+
+var canHold = true;
+
+var nextMinos = [];
+var nextSize = 4;
+for(let i = 0; i < nextSize; i++) nextMinos.push(generateNewMino());
+
 var runGame = setInterval(gameLoop, fallRate);
+
+const boxWidth = 4;
+const boxHeight = 3;
+
+$holdBox = $(".display-box");
+createGrid($holdBox, boxWidth, boxHeight);
+
+const clearBoard = ($board, rows, cols) => {
+    for(let r = 0; r < rows; r++) {
+        for(let c = 0; c < cols; c++) {
+            getTileAt($board, r, c).attr("class", "empty");
+        }
+    }
+}
+
+const drawHeldMino = () => {
+    clearBoard($holdBox, boxHeight, boxWidth);
+
+    currArr = MINO_LIST[heldId-1];
+
+    for(let r = 0; r < currArr.length; r++) {
+        for(let c = 0; c < currArr[r].length; c++) {
+            let currRow = r;
+            let currCol = c;
+            if(this.currArr[r][c] && currRow > -1) 
+                getTileAt($holdBox, currRow, currCol).attr("class", "mino");
+        }
+    }
+}
+
+var $nextCon = $("#next-container");
+for(let i = 0; i < nextSize; i++) {
+    $newItem = $nxt.clone();
+    createGrid($newItem, boxWidth, boxHeight);
+    $nextCon.append($newItem);
+}
+
+const drawNextMinos = () => {
+    for(let i = 0; i < nextSize; i++) {
+        currMino = nextMinos[i];
+        currArr = MINO_LIST[currMino.id-1];
+        $currCon = $nextCon.children().eq(i);
+
+        clearBoard($currCon, boxHeight, boxWidth);
+        
+        for(let r = 0; r < currArr.length; r++) {
+            for(let c = 0; c < currArr[r].length; c++) {
+                let currRow = r;
+                let currCol = c;
+                if(this.currArr[r][c] && currRow > -1) 
+                    getTileAt($currCon, currRow, currCol).attr("class", "mino");
+            }
+        }
+
+    }
+}
+
+drawNextMinos();
+
+

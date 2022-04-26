@@ -3,11 +3,23 @@
     padding:0;
 }
 
+a {
+    text-decoration: none;
+}
+a::after {
+    text-decoration: none;
+}
+
 body {
     width: 100vw;
     height: 100vh;
     background-color: black;
     background-image: linear-gradient(black, rgb(20, 20, 20));
+}
+
+#home-page {
+    background-color: black;
+    background-image: linear-gradient(purple, orange);
 }
 
 #container {
@@ -75,6 +87,20 @@ body {
     font-size: 2vw;
     border: solid 2px gray;
     color:white;
+}
+
+#back:hover {
+    color:orange;
+    font-size: 2.2vw;
+}
+
+#arcade-machine {
+    margin-inline: 5vw;
+    width: 18.8vw;
+    height: 40vw;
+    background-image: url(https://api.sandbox.game/assets/public/f9a867a6-7076-4968-be99-ca8972bc7feb/preview?bafkreicpvddc7zwxmpsnv3qkic55tlfc3s5lmv2v4diyru5vxoxnzegtju?bafkreicpvddc7zwxmpsnv3qkic55tlfc3s5lmv2v4diyru5vxoxnzegtju);
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .row {

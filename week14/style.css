@@ -6,6 +6,8 @@
 body {
     width: 100vw;
     height: 100vh;
+    background-color: black;
+    background-image: linear-gradient(black, rgb(20, 20, 20));
 }
 
 #container {
@@ -24,7 +26,7 @@ body {
 }
 
 #grid {
-    border: solid 5px black;    
+    border: solid 5px gray;    
 }
 
 #tile{
@@ -33,9 +35,27 @@ body {
     color: white;
 }
 
+#controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: solid 2px gray;
+    background-color: rgb(17, 17, 17);
+    margin: 1vw;
+}
+
+#controls p {
+    font-size: .75vw;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
+    margin: 1vh;
+}
+
 .display-box {
-    border: solid 2px black;
+    border: solid 2px gray;
     margin-inline: 2vw;
+    margin-top: 1vh;
 }
 
 #next-container {
@@ -59,6 +79,16 @@ body {
     background-color: red;
 }
 
+.next {
+    border: solid 1px black;
+    background-color: purple;
+}
+
+.hold {
+    border: solid 1px black;
+    background-color: green;
+}
+
 .ghost {
     border: solid 1px white;
     background-color: gray;
@@ -69,8 +99,21 @@ body {
     background-color: blue;
 }
 
+.filled-lost {
+    border: solid 1px black;
+    background-color: gray;
+}
+
 .score-box {
-    width: 10vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15vw;
     height: 10vw;
-    border: solid 5px red;
+    border: solid 5px gray;
+    margin-left: 1vw;
+    background-color: rgb(17, 17, 17);
+    font-size: 1.75vw;
+    color: white;
+    font-family: 'Press Start 2P', cursive;
 }

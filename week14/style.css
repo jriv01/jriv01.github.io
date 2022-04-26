@@ -63,6 +63,20 @@ body {
     flex-direction: column-reverse;
 }
 
+#back {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 15vw;
+    height: 10vh;
+    background-color: black;
+    margin-top: 2vh;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2vw;
+    border: solid 2px gray;
+    color:white;
+}
+
 .row {
     display: flex;
     justify-content: center;

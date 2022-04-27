@@ -43,7 +43,7 @@ var $row = $("<div />", {
 });
 
 var $grid = $("#grid");
-var $score = $(".score-box");
+var $score = $("#score-box");
 $score.css("font-size", "4vw");
 
 const createGrid = n => {

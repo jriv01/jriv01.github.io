@@ -28,7 +28,7 @@ var velR;
 var updateVelC;
 var updateVelR;
 var runGame;
-const refreshRate = 100;
+const refreshRate = 115;
 
 // HTML elements
 var $tile = $("<div />", {

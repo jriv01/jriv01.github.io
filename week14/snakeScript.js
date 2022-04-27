@@ -28,7 +28,7 @@ var velR;
 var updateVelC;
 var updateVelR;
 var runGame;
-const refreshRate = 150;
+const refreshRate = 100;
 
 // HTML elements
 var $tile = $("<div />", {
@@ -43,6 +43,8 @@ var $row = $("<div />", {
 });
 
 var $grid = $("#grid");
+var $score = $(".score-box");
+$score.css("font-size", "4vw");
 
 const createGrid = n => {
     for(let r = 0; r < n; r++) {
@@ -82,6 +84,9 @@ const resetBoard = () => {
 
     snakeRows = [];
     snakeCols = [];
+
+    score = 0;
+    $score.text(score);
 }
 
 const gameLoop = () => {
@@ -106,6 +111,9 @@ const gameLoop = () => {
             snakeLen ++;
             getTileAt(appleRow, appleCol).attr("class", "snake");
             randomizeApple();
+
+            score ++;
+            $score.text(score);
         }
     }
 }
@@ -190,6 +198,7 @@ $(document).keydown(function(event) {
 });
 
 createGrid(gridSize);
+resetBoard();
 initializeSnake();
 initializeApple();
 runGame = setInterval(gameLoop, refreshRate);

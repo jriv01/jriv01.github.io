@@ -3,24 +3,23 @@
     padding:0;
 }
 
-a {
-    text-decoration: none;
-}
-a::after {
-    text-decoration: none;
-}
-
 body {
     width: 100vw;
     height: 100vh;
     background-color: black;
     background-image: linear-gradient(black, rgb(20, 20, 20));
+    overflow:hidden;
 }
 
-#home-page {
-    background-color: black;
-    background-image: linear-gradient(purple, orange);
+a {
+    text-decoration: none;
+    margin-inline: 5vw;
 }
+
+a::after {
+    text-decoration: none;
+}
+
 
 #container {
     width: 100%;
@@ -37,14 +36,102 @@ body {
     flex-direction: column;
 }
 
-#grid {
-    border: solid 5px gray;    
-}
-
 #tile{
     width: 25px;
     height: 25px;
     color: white;
+}
+
+#back {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    
+    margin-top: 2vh;
+    width: 15vw;
+    height: 10vh;
+
+    background-color: black;
+    border: solid 2px gray;
+    font-family: 'Press Start 2P', cursive;
+    font-size: 2vw;
+    color:white;
+}
+
+
+/* HOME PAGE STYLING */
+
+#back:hover {
+    color:orange;
+    font-size: 2.2vw;
+}
+
+#arcade-machine {
+    padding:0;
+    width: 18.8vw;
+    height: 40vw;
+    background-image: url(https://api.sandbox.game/assets/public/f9a867a6-7076-4968-be99-ca8972bc7feb/preview?bafkreicpvddc7zwxmpsnv3qkic55tlfc3s5lmv2v4diyru5vxoxnzegtju?bafkreicpvddc7zwxmpsnv3qkic55tlfc3s5lmv2v4diyru5vxoxnzegtju);
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
+#arcade-machine:hover {
+    transform: scale(1.1);
+}
+
+#home-page {
+    background-color: black;
+    background-image: linear-gradient(45deg, #2c0735, #15106b, #2c0735);
+}
+
+#floor {
+    display: grid;
+    grid-template-rows: repeat(10,1fr);
+    grid-template-columns: repeat(10,1fr);
+    
+    position: absolute;
+    top: 70%;
+    transform: skew(30deg, 0deg);
+    
+    width:120vw;
+    height:120%;
+    
+    background-color: black;
+
+    z-index: -1;
+}
+
+#circle {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    
+    position: absolute;
+    top: 50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+
+    width:40vw;
+    height:40vw;
+
+    border: solid 5px black;
+    border-radius: 100%;
+    background-image: linear-gradient(#f56a00,#8e008b);
+
+    z-index: -1;
+}
+
+.floor-tile {
+    border: solid 3px cyan;
+}
+
+
+/* TETRIS STYLING */
+
+
+#grid {
+    border: solid 5px gray;    
 }
 
 #controls {
@@ -52,9 +139,12 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: solid 2px gray;
-    background-color: rgb(17, 17, 17);
+    
     margin: 1vw;
+    
+    background-color: rgb(17, 17, 17);
+    border: solid 2px gray;
+    
 }
 
 #controls p {
@@ -73,34 +163,6 @@ body {
 #next-container {
     display: flex;
     flex-direction: column-reverse;
-}
-
-#back {
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    width: 15vw;
-    height: 10vh;
-    background-color: black;
-    margin-top: 2vh;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 2vw;
-    border: solid 2px gray;
-    color:white;
-}
-
-#back:hover {
-    color:orange;
-    font-size: 2.2vw;
-}
-
-#arcade-machine {
-    margin-inline: 5vw;
-    width: 18.8vw;
-    height: 40vw;
-    background-image: url(https://api.sandbox.game/assets/public/f9a867a6-7076-4968-be99-ca8972bc7feb/preview?bafkreicpvddc7zwxmpsnv3qkic55tlfc3s5lmv2v4diyru5vxoxnzegtju?bafkreicpvddc7zwxmpsnv3qkic55tlfc3s5lmv2v4diyru5vxoxnzegtju);
-    background-size: contain;
-    background-repeat: no-repeat;
 }
 
 .row {
@@ -156,4 +218,20 @@ body {
     font-size: 1.75vw;
     color: white;
     font-family: 'Press Start 2P', cursive;
+}
+
+/* SNAKE STYLING */
+.snake {
+    border: solid 1px green;
+    background-color: green;
+}
+
+.apple {
+    border: solid 1px red;
+    background-color: red;
+}
+
+.vacant {
+    border: solid 1px black;
+    background-color: black;
 }

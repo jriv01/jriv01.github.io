@@ -73,7 +73,7 @@ var $nxt = $("<div />", {
 var $hold = $(".display-box");
 var $grid = $("#grid");
 var $nextCon = $("#next-container");
-var $score = $(".score-box");
+var $score = $("#score-box");
 
 // Variables for playing the game
 const nextSize = 4;

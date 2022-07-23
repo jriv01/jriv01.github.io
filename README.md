@@ -1,3 +1,3 @@
 # jriv01.github.io
 ## NYU Tandon || Web Development
-Currently contains files I work with in my Web Development course :)
+Spring '22 --- Currently contains files I work with in my Web Development course :)
